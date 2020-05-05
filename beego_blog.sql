@@ -33,8 +33,8 @@ DROP TABLE IF EXISTS `tb_category`;
 CREATE TABLE `tb_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL,
+  `updated` timestamp NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -60,7 +60,7 @@ CREATE TABLE `tb_comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
   `content` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
-  `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL,
   `ip` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
   `post_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -120,8 +120,8 @@ CREATE TABLE `tb_post` (
   `views` mediumint(9) NOT NULL,
   `status` tinyint(4) NOT NULL,
   `is_top` tinyint(4) NOT NULL DEFAULT '0',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL,
+  `updated` timestamp NOT NULL,
   `category_id` int(11) NOT NULL,
   `types` tinyint(4) DEFAULT NULL COMMENT '1. 文章 0 下载',
   `info` varchar(500) CHARACTER SET utf8 DEFAULT NULL COMMENT '简介',
@@ -151,8 +151,8 @@ CREATE TABLE `tb_tag` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '标签名',
   `count` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '使用次数',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL,
+  `updated` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
@@ -206,11 +206,11 @@ CREATE TABLE `tb_user` (
   `password` varchar(255) DEFAULT NULL,
   `email` varchar(200) DEFAULT NULL,
   `login_count` int(11) DEFAULT NULL,
-  `last_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `last_time` timestamp NOT NULL,
   `last_ip` varchar(200) DEFAULT 'current_timestamp()',
   `state` tinyint(4) DEFAULT NULL,
-  `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL,
+  `updated` timestamp NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
