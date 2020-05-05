@@ -221,7 +221,7 @@ CREATE TABLE `tb_user` (
 
 LOCK TABLES `tb_user` WRITE;
 /*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
-INSERT INTO `tb_user` VALUES (1,'jack','a82cf535acefda50f3472d2ee244162f','',24,'2020-05-05 07:18:10','[',0,NULL,'2020-05-05 07:18:10');
+INSERT INTO `tb_user` VALUES (1,'jack','a82cf535acefda50f3472d2ee244162f','',24,'2020-05-05 07:18:10','[',0,now(),now());
 /*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
