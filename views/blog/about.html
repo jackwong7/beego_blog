@@ -1,0 +1,36 @@
+﻿
+{{template "blog/head.html" .}}
+    <!-- 主体（一般只改变这里的内容） -->
+    <div class="blog-body">
+        <div class="blog-container">
+            <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+                <a href="home.html" title="网站首页">网站首页</a>
+                <a><cite>关于本站</cite></a>
+            </blockquote>
+
+            <div class="blog-main">
+                <div class="layui-tab layui-tab-brief shadow" lay-filter="tabAbout">
+
+                    <div class="layui-tab-content">
+                        <div >
+                            <div class="aboutinfo">
+                                <div class="aboutinfo-figure">
+                                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588671257076&di=b136d1d8c3a5c61bbdd8056d31e606d0&imgtype=0&src=http%3A%2F%2Fwww.17qq.com%2Fimg_qqtouxiang%2F77078770.jpeg" style="width: 150px; height: 150px;" />
+                                </div>
+
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend>简介</legend>
+                                    <div class="layui-field-box aboutinfo-abstract">
+                                       {{.post.Content}}
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{template "blog/foot.html" .}}
+</body>
+</html>
