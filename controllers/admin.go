@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/jackwong7/beego_blog/models"
 	"github.com/jackwong7/beego_blog/util"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -138,8 +139,19 @@ func (c *AdminController) Article() {
 
 //上传接口
 func (c *AdminController) Upload() {
-	f, h, err := c.GetFile("uploadname")
 	result := make(map[string]interface{})
+	path := "./static/upload/" + time.Now().Format("2006/01/02")
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		err := os.MkdirAll(path, os.ModeDir)
+		if err != nil {
+			result["code"] = 2
+			result["message"] = "上传异常" + err.Error()
+			c.Data["json"] = result
+			c.ServeJSON()
+			return
+		}
+	}
+	f, h, err := c.GetFile("uploadname")
 	img := ""
 	if err == nil {
 		exStrArr := strings.Split(h.Filename, ".")
@@ -148,10 +160,10 @@ func (c *AdminController) Upload() {
 			result["code"] = 1
 			result["message"] = "上传只能.jpg 或者png格式"
 		}
-		img = "/static/upload/" + time.Now().Format("2006/01/02/") + util.UniqueId() + "." + exStr
-		err := c.SaveToFile("uploadname", "."+img) // 保存位置在 static/upload, 没有文件夹要先创建
+		img = path + util.UniqueId() + "." + exStr
+		err := c.SaveToFile("uploadname", img) // 保存位置在 static/upload, 没有文件夹要先创建
 		result["code"] = 0
-		result["message"] = img
+		result["message"] = strings.TrimLeft(img, ".")
 		if err != nil {
 			result["code"] = 2
 			result["message"] = "上传异常" + err.Error()
@@ -177,7 +189,7 @@ func (c *AdminController) Save() {
 	post.Url = c.Input().Get("url")
 	post.CategoryId, _ = c.GetInt("cate_id")
 	post.Info = c.Input().Get("info")
-	post.Image = c.Input().Get("image")
+	post.Image = c.Input().Get("Image")
 	post.Created = time.Now()
 	post.Updated = time.Now()
 
@@ -189,8 +201,14 @@ func (c *AdminController) Save() {
 			c.History("插入数据成功", "/admin/index.html")
 		}
 	} else {
+		postField := []string{
+			"Title", "Content", "IsTop", "Types", "Tags", "Url", "CategoryId", "Info", "Updated",
+		}
+		if post.Image != "" {
+			postField = append(postField, "Image")
+		}
 		post.Id = id
-		if _, err := c.o.Update(&post, "Title", "Content", "IsTop", "Types", "Tags", "Url", "CategoryId", "Info", "Image", "Updated"); err != nil {
+		if _, err := c.o.Update(&post, postField...); err != nil {
 			c.History("更新数据出错"+err.Error(), "")
 		} else {
 			c.History("插入数据成功", "/admin/index.html")
