@@ -10,6 +10,7 @@
 body {
     background: #eee;
     color: #444;
+    font-family: Consolas,source-code-pro,monospace;
 }
 
 .shadow {
