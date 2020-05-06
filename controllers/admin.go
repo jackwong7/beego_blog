@@ -148,10 +148,14 @@ func (c *AdminController) Upload() {
 			result["code"] = 1
 			result["message"] = "上传只能.jpg 或者png格式"
 		}
-		img = "/static/upload/" + util.UniqueId() + "." + exStr
-		c.SaveToFile("upFilename", img) // 保存位置在 static/upload, 没有文件夹要先创建
+		img = "/static/upload/" + time.Now().Format("2006/01/02/") + util.UniqueId() + "." + exStr
+		err := c.SaveToFile("uploadname", "."+img) // 保存位置在 static/upload, 没有文件夹要先创建
 		result["code"] = 0
 		result["message"] = img
+		if err != nil {
+			result["code"] = 2
+			result["message"] = "上传异常" + err.Error()
+		}
 	} else {
 		result["code"] = 2
 		result["message"] = "上传异常" + err.Error()
