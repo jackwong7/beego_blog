@@ -9,7 +9,7 @@
 </head>
 <body>
 <script type="text/javascript" src="/static/plug/layui/layui.js"></script>
-<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <form class="layui-form" action="/admin/save"  method="post" style="margin:20px">
     <input name="id" value="{{.post.Id}}" type="hidden">
     <div class="layui-form-item">
