@@ -31,12 +31,12 @@
                     {{range .list}}
                     <div class="article shadow">
                         <div class="article-left">
-                            <img src="{{.Image}}"  />
+                            <img src="{{.Image}}"  alt="{{.Tags}}"/>
                         </div>
                         <div class="article-right">
-                            <div class="article-title">
+                            <h2 class="article-title">
                                 <a href="detail.html?id={{.Id}}">{{.Title}}</a>
-                            </div>
+                            </h2>
                             <div class="article-abstract">
                                 {{.Info}}
                             </div>
@@ -87,7 +87,7 @@
                         <div class="blog-module-title">热文排行</div>
                         <ul class="fa-ul blog-module-ul">
                             {{range .hosts}}
-                            <li style="line-height: 30px"><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html?id={{.Id}}">{{.Title}}</a></li>
+                            <li style="line-height: 30px"><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html?id={{.Id}}"><h3>{{.Title}}</h3></a></li>
                             {{end}}
                         </ul>
                     </div>
