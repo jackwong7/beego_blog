@@ -65,7 +65,7 @@ func (c *BlogController) list() {
 */
 func (c *BlogController) Home() {
 	c.list()
-	c.Data["nav"] = "home"
+	c.Data["actionTitle"] = "网站首页"
 	c.TplName = c.controllerName + "/home.html"
 }
 
@@ -74,7 +74,7 @@ func (c *BlogController) Home() {
 */
 func (c *BlogController) Article() {
 	c.list()
-	c.Data["nav"] = "article"
+	c.Data["actionTitle"] = "文章专栏"
 	c.TplName = c.controllerName + "/article.html"
 }
 
@@ -82,6 +82,7 @@ func (c *BlogController) Article() {
 详情
 */
 func (c *BlogController) Detail() {
+	c.Data["actionTitle"] = "文章详情"
 	if id, _ := c.GetInt("id"); id != 0 {
 		post := models.Post{Id: id}
 		err := c.o.Read(&post)
@@ -101,12 +102,14 @@ func (c *BlogController) Detail() {
 		querys := c.o.QueryTable(new(models.Post).TableName()).Filter("types", 1)
 		querys.OrderBy("-views").Limit(10, 0).All(&hosts)
 		c.Data["hosts"] = hosts
-		o := orm.NewOrm()
-		o.Raw("UPDATE tb_post SET views = views + 1 WHERE id = ?", id).Exec()
+		go func() {
+			o := orm.NewOrm()
+			o.Raw("UPDATE tb_post SET views = views + 1 WHERE id = ?", id).Exec()
+		}()
+		c.Data["actionTitle"] = post.Title
 	} else {
 		c.Abort("404")
 	}
-	c.Data["nav"] = "article"
 	c.TplName = c.controllerName + "/detail.html"
 }
 
@@ -117,20 +120,20 @@ func (c *BlogController) About() {
 	post := models.Post{Id: 1}
 	c.o.Read(&post)
 	c.Data["post"] = post
-	c.Data["nav"] = "about"
+	c.Data["actionTitle"] = "关于我们"
 	c.TplName = c.controllerName + "/about.html"
 }
 
 //时间线
 func (c *BlogController) Timeline() {
-	c.Data["nav"] = "timeline"
+	c.Data["actionTitle"] = "点点滴滴"
 	c.TplName = c.controllerName + "/timeline.html"
 }
 
 //资源
 func (c *BlogController) Resource() {
 	c.list()
-	c.Data["nav"] = "resource"
+	c.Data["actionTitle"] = "资源分享"
 	c.TplName = c.controllerName + "/resource.html"
 }
 

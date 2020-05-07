@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="Keywords" content="{{.config.keywords}}">
     <meta name="Description" content="{{.config.description}}">
-    <title>{{.actionName}}-{{.config.title}}</title>
+    <title>{{.actionTitle}}-{{.config.title}}</title>
     <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
     <!--Layui-->
     <link href="/static/plug/layui/css/layui.css" rel="stylesheet" />
@@ -32,19 +32,19 @@
         <a class="blog-logo" href="home.html">JW-博客</a>
         <!-- 导航菜单 -->
         <ul class="layui-nav" lay-filter="nav">
-            <li class="layui-nav-item {{if eq .nav "home"}}layui-this{{end}}">
+            <li class="layui-nav-item {{if eq .actionName "home"}}layui-this{{end}}">
                 <a href="home.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
             </li>
-            <li class="layui-nav-item {{if eq .nav "article"}}layui-this{{end}}">
+            <li class="layui-nav-item {{if eq .actionName "article"}}layui-this{{end}}">
                 <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
             </li>
-            <li class="layui-nav-item {{if eq .nav "resource"}}layui-this{{end}}">
+            <li class="layui-nav-item {{if eq .actionName "resource"}}layui-this{{end}}">
                 <a href="resource.html"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
             </li>
-            <li class="layui-nav-item {{if eq .nav "timeline"}}layui-this{{end}}">
+            <li class="layui-nav-item {{if eq .actionName "timeline"}}layui-this{{end}}">
                 <a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;点点滴滴</a>
             </li>
-            <li class="layui-nav-item {{if eq .nav "about"}}layui-this{{end}}">
+            <li class="layui-nav-item {{if eq .actionName "about"}}layui-this{{end}}">
                 <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
             </li>
         </ul>
