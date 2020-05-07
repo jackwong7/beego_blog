@@ -21,7 +21,7 @@ func GetConfigs() []*Config {
 	name := "getConfigs"
 	configs := []*Config{}
 	conn := service.Pool.Get()
-	defer conn.Close()
+	//defer conn.Close()
 	if jsonData, err := redis.Bytes(conn.Do("get", name)); err == nil {
 		err := json.Unmarshal(jsonData, &configs)
 		if err == nil {

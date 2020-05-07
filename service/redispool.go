@@ -9,7 +9,7 @@ var Exp = 60 * 5
 
 func init() {
 	Pool = &redis.Pool{
-		MaxIdle:     100,
+		MaxIdle:     200,
 		MaxActive:   0,
 		IdleTimeout: 200,
 		Dial: func() (redis.Conn, error) {
