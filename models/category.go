@@ -23,7 +23,7 @@ func GetCategories() []*Category {
 	name := "getCategories"
 	categories := []*Category{}
 	conn := service.Pool.Get()
-	//defer conn.Close()
+	defer conn.Close()
 	if jsonData, err := redis.Bytes(conn.Do("get", name)); err == nil {
 		err := json.Unmarshal(jsonData, &categories)
 		if err == nil {

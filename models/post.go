@@ -58,7 +58,7 @@ func GetPosts(queryField QueryField, o orm.Ormer) Postlists {
 	name := queryField.ActionName + strconv.Itoa(queryField.Page) + strconv.Itoa(queryField.CateId) + queryField.Keyword
 	postlists := Postlists{}
 	conn := service.Pool.Get()
-	//defer conn.Close()
+	defer conn.Close()
 	if jsonData, err := redis.Bytes(conn.Do("get", name)); err == nil {
 		err := json.Unmarshal(jsonData, &postlists)
 		if err == nil {
