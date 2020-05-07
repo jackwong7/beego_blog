@@ -69,3 +69,11 @@
     line-height: 1.9;
     font-family: Consolas,source-code-pro,monospace;
 }
+p{
+    line-height: 1.5em;
+    margin: 1em 0;
+    font-size: 14px;
+}
+.list-paddingleft-2 {
+    padding-left: 30px;
+}
