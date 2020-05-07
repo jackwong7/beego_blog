@@ -1,10 +1,10 @@
 package models
 
 import (
-	"encoding/json"
 	"github.com/astaxie/beego/orm"
 	"github.com/garyburd/redigo/redis"
 	"github.com/jackwong7/beego_blog/service"
+	"github.com/json-iterator/go"
 	"strconv"
 	"time"
 )
@@ -48,6 +48,8 @@ type Postlists struct {
 }
 
 func GetPosts(queryField QueryField, o orm.Ormer) Postlists {
+	var json = jsoniter.ConfigCompatibleWithStandardLibrary
+
 	var (
 		offset   int
 		hosts    []*Post
