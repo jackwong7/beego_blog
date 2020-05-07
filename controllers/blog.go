@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego/orm"
 	"github.com/jackwong7/beego_blog/models"
 	"github.com/jackwong7/beego_blog/util"
 	"time"
@@ -12,52 +11,26 @@ type BlogController struct {
 }
 
 func (c *BlogController) list() {
-	var (
-		page     int
-		pagesize int = 6
-		offset   int
-		list     []*models.Post
-		hosts    []*models.Post
-		cateId   int
-		keyword  string
-	)
 
-	categorys := []*models.Category{}
-	c.o.QueryTable(new(models.Category).TableName()).All(&categorys)
-	c.Data["cates"] = categorys
+	getCategories := models.GetCategories()
+	c.Data["cates"] = getCategories
 
-	if page, _ = c.GetInt("page"); page < 1 {
-		page = 1
+	queryField := models.QueryField{}
+	queryField.ActionName = c.actionName
+	if queryField.Page, _ = c.GetInt("page"); queryField.Page < 1 {
+		queryField.Page = 1
 	}
-	offset = (page - 1) * pagesize
-	query := c.o.QueryTable(new(models.Post).TableName())
+	queryField.CateId, _ = c.GetInt("cate_id")
+	queryField.Keyword = c.Input().Get("keyword")
 
-	if c.actionName == "resource" {
-		query = query.Filter("types", 0)
-	} else {
-		query = query.Filter("types", 1)
-	}
+	//var postLists models.Postlists
+	postLists := models.GetPosts(queryField, c.o)
 
-	if cateId, _ = c.GetInt("cate_id"); cateId != 0 {
-		query = query.Filter("category_id", cateId)
-	}
-	keyword = c.Input().Get("keyword")
-	if keyword != "" {
-		query = query.Filter("title__icontains", keyword)
-	}
-	query.OrderBy("-views").Limit(10, 0).All(&hosts)
-
-	if c.actionName == "home" {
-		query = query.Filter("is_top", 1)
-	}
-	count, _ := query.Count()
-	c.Data["count"] = count
-	query.OrderBy("-created").Limit(pagesize, offset).All(&list)
-
-	c.Data["list"] = list
-	c.Data["pagebar"] = util.NewPager(page, int(count), pagesize, "/"+c.actionName, true).ToString()
-	c.Data["hosts"] = hosts
-	c.Data["keyword"] = keyword
+	c.Data["list"] = postLists.List
+	c.Data["count"] = postLists.Count
+	c.Data["pagebar"] = util.NewPager(postLists.Page, int(postLists.Count), postLists.Pagesize, "/"+c.actionName, true).ToString()
+	c.Data["hosts"] = postLists.Hosts
+	c.Data["keyword"] = postLists.Keyword
 }
 
 /**
@@ -103,8 +76,7 @@ func (c *BlogController) Detail() {
 		querys.OrderBy("-views").Limit(10, 0).All(&hosts)
 		c.Data["hosts"] = hosts
 		go func() {
-			o := orm.NewOrm()
-			o.Raw("UPDATE tb_post SET views = views + 1 WHERE id = ?", id).Exec()
+			c.o.Raw("UPDATE tb_post SET views = views + 1 WHERE id = ?", id).Exec()
 		}()
 		c.Data["actionTitle"] = post.Title
 	} else {
