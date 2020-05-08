@@ -24,13 +24,13 @@ func (c *BlogController) list() {
 	queryField.Keyword = c.Input().Get("keyword")
 
 	//var postLists models.Postlists
-	postLists := models.GetPosts(queryField, c.o)
+	postLists := models.GetPosts(&queryField, c.o)
 
-	c.Data["list"] = postLists.List
-	c.Data["count"] = postLists.Count
-	c.Data["pagebar"] = util.NewPager(postLists.Page, int(postLists.Count), postLists.Pagesize, "/"+c.actionName, true).ToString()
-	c.Data["hosts"] = postLists.Hosts
-	c.Data["keyword"] = postLists.Keyword
+	c.Data["list"] = *postLists.List
+	c.Data["count"] = *postLists.Count
+	c.Data["pagebar"] = util.NewPager(*postLists.Page, int(*postLists.Count), *postLists.Pagesize, "/"+c.actionName, true).ToString()
+	c.Data["hosts"] = *postLists.Hosts
+	c.Data["keyword"] = *postLists.Keyword
 }
 
 /**

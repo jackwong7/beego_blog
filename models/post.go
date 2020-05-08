@@ -55,15 +55,15 @@ type QueryField struct {
 }
 
 type Postlists struct {
-	Keyword  string
-	List     []orm.Params
-	Hosts    []orm.Params
-	Page     int
-	Pagesize int
-	Count    int64
+	Keyword  *string
+	List     *[]orm.Params
+	Hosts    *[]orm.Params
+	Page     *int
+	Pagesize *int
+	Count    *int64
 }
 
-func GetPosts(queryField QueryField, o orm.Ormer) Postlists {
+func GetPosts(queryField *QueryField, o orm.Ormer) *Postlists {
 	var (
 		offset   int
 		hosts    []orm.Params
@@ -78,7 +78,7 @@ func GetPosts(queryField QueryField, o orm.Ormer) Postlists {
 	if jsonData, err := redis.Bytes(conn.Do("get", name)); err == nil {
 		err := json.Unmarshal(jsonData, &postlists)
 		if err == nil {
-			return postlists
+			return &postlists
 		}
 	}
 
@@ -105,17 +105,17 @@ func GetPosts(queryField QueryField, o orm.Ormer) Postlists {
 	query.OrderBy("-created").Limit(pagesize, offset).Values(&list, "id", "title", "image", "tags", "views", "info", "updated")
 
 	postlists = Postlists{
-		Keyword:  queryField.Keyword,
-		List:     list,
-		Hosts:    hosts,
-		Page:     queryField.Page,
-		Pagesize: pagesize,
-		Count:    count,
+		Keyword:  &queryField.Keyword,
+		List:     &list,
+		Hosts:    &hosts,
+		Page:     &queryField.Page,
+		Pagesize: &pagesize,
+		Count:    &count,
 	}
 
 	cachePostlists, err := json.Marshal(postlists)
 	if err == nil {
 		conn.Do("set", name, cachePostlists, "ex", service.Exp)
 	}
-	return postlists
+	return &postlists
 }
