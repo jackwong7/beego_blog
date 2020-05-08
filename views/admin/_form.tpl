@@ -190,77 +190,71 @@
 <script type="text/javascript" src="/static/froala_editor_3.1.1/js/languages/zh_cn.js"></script>
 
 <script>
-
-  (function () {
+(function () {
+    //这个是我自定义的按钮，用来添加代码区块的
     FroalaEditor.DefineIcon('insertCode', { NAME: 'plus', SVG_KEY: 'add' });
     FroalaEditor.RegisterCommand('insertCode', {
-    title: '插入代码',
-    focus: true,
-    undo: true,
-    refreshAfterCallback: true,
-    callback: function () {
-    console.log(this)
-
-    let txt = this.selection.text();
-     if (txt === undefined) return;
-
-      this.html.insert(`<code>${txt}</code>`);
-
-    }
+        title: '插入代码',
+        focus: true,
+        undo: true,
+        refreshAfterCallback: true,
+        callback: function () {
+            let txt = this.selection.text();
+            if (txt === undefined) return;
+            this.html.insert(`<pre class="code">${txt}</pre>`);
+        }
     });
+    //自定义区块--end
     new FroalaEditor("#edit",{
-         key: '',
-         language: 'zh_cn',
-         height: 300,
+        key: '',
+        language: 'zh_cn',
+        height: 300,
 
-         // disable quick insert
-         quickInsertTags: [],
+        // disable quick insert
+        quickInsertTags: [],
 
-         //需要按钮可以参考这几个
-         //{moreText:{buttons:
-         //["bold","italic","underline","strikeThrough","subscript","superscript","fontFamily","fontSize","textColor","backgroundColor","inlineClass","inlineStyle","clearFormatting"]
-         //},moreParagraph:{buttons:
-         //["alignLeft","alignCenter","formatOLSimple","alignRight","alignJustify","formatOL","formatUL","paragraphFormat","paragraphStyle","lineHeight","outdent","indent","quote"]
-         //},moreRich:{buttons:
-         //["insertLink","insertImage","insertVideo","insertTable","emoticons","fontAwesome","specialCharacters","embedly","insertFile","insertHR"]
-         //},moreMisc:{buttons:
-         //["undo","redo","fullscreen","print","getPDF","spellChecker","selectAll","html","help"]
-         //,align:"right",buttonsVisible:2}}
+        //需要按钮可以参考这几个
+        //{moreText:{buttons:
+        //["bold","italic","underline","strikeThrough","subscript","superscript","fontFamily","fontSize","textColor","backgroundColor","inlineClass","inlineStyle","clearFormatting"]
+        //},moreParagraph:{buttons:
+        //["alignLeft","alignCenter","formatOLSimple","alignRight","alignJustify","formatOL","formatUL","paragraphFormat","paragraphStyle","lineHeight","outdent","indent","quote"]
+        //},moreRich:{buttons:
+        //["insertLink","insertImage","insertVideo","insertTable","emoticons","fontAwesome","specialCharacters","embedly","insertFile","insertHR"]
+        //},moreMisc:{buttons:
+        //["undo","redo","fullscreen","print","getPDF","spellChecker","selectAll","html","help"]
+        //,align:"right",buttonsVisible:2}}
 
-         // toolbar buttons
-         toolbarButtons: ['fullscreen', 'textColor','fontFamily','backgroundColor','bold', 'italic', 'underline', 'strikeThrough','insertCode','emoticons', '|', 'paragraphFormat', 'fontSize', 'color', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertFile', 'insertImage', 'insertVideo', 'embedly', 'insertTable', '|', 'insertHR', 'selectAll', 'clearFormatting', '|', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
+        // toolbar buttons
+        toolbarButtons: ['fullscreen', 'textColor','fontFamily','backgroundColor','bold', 'italic', 'underline', 'strikeThrough','insertCode','emoticons', '|', 'paragraphFormat', 'fontSize', 'color', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertFile', 'insertImage', 'insertVideo', 'embedly', 'insertTable', '|', 'insertHR', 'selectAll', 'clearFormatting', '|', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
 
-         // upload file
-         imageUploadParam: 'uploadname',
-         imageUploadURL: '/admin/upload',
-         fileUploadMethod: 'POST',
-         fileMaxSize: 20 * 1024 * 1024,
-         fileAllowedTypes: ['*'],
+        // upload file
+        imageUploadParam: 'uploadname',
+        imageUploadURL: '/admin/upload',
+        fileUploadMethod: 'POST',
+        fileMaxSize: 20 * 1024 * 1024,
+        fileAllowedTypes: ['*'],
 
-         // upload image
-         imageUploadParam: 'uploadname',
-         imageUploadURL: '/admin/upload',
-         imageUploadMethod: 'POST',
-         imageMaxSize: 5 * 1024 * 1024,
-         imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'svg+xml'],
+        // upload image
+        imageUploadParam: 'uploadname',
+        imageUploadURL: '/admin/upload',
+        imageUploadMethod: 'POST',
+        imageMaxSize: 5 * 1024 * 1024,
+        imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'svg+xml'],
 
-         // upload video
-         imageUploadParam: 'uploadname',
-         imageUploadURL: '/admin/upload',
-         videoUploadMethod: 'POST',
-         videoMaxSize: 50 * 1024 * 1024,
-         videoAllowedTypes: ['avi', 'mov', 'mp4', 'm4v', 'mpeg', 'mpg', 'wmv', 'ogv'],
-     }).on('froalaEditor.file.error', function (e, editor, error, response) {
-         // handle errors
-     }).on('froalaEditor.image.error', function (e, editor, error, response) {
-         // handle errors
-     }).on('froalaEditor.video.error', function (e, editor, error, response) {
-         // handle errors
-     });
-
-  })()
-
-
+        // upload video
+        imageUploadParam: 'uploadname',
+        imageUploadURL: '/admin/upload',
+        videoUploadMethod: 'POST',
+        videoMaxSize: 50 * 1024 * 1024,
+        videoAllowedTypes: ['avi', 'mov', 'mp4', 'm4v', 'mpeg', 'mpg', 'wmv', 'ogv'],
+    }).on('froalaEditor.file.error', function (e, editor, error, response) {
+        // handle errors
+    }).on('froalaEditor.image.error', function (e, editor, error, response) {
+        // handle errors
+    }).on('froalaEditor.video.error', function (e, editor, error, response) {
+        // handle errors
+    });
+})()
 </script>
 </body>
 </html>
