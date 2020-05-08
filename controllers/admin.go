@@ -160,10 +160,11 @@ func (c *AdminController) Upload() {
 			result["code"] = 1
 			result["message"] = "上传只能.jpg 或者png格式"
 		}
-		img = path + util.UniqueId() + "." + exStr
+		img = path + "/" + util.UniqueId() + "." + exStr
 		err := c.SaveToFile("uploadname", img) // 保存位置在 static/upload, 没有文件夹要先创建
 		result["code"] = 0
-		result["message"] = strings.TrimLeft(img, ".")
+		result["message"] = "上传成功"
+		result["link"] = strings.TrimLeft(img, ".")
 		if err != nil {
 			result["code"] = 2
 			result["message"] = "上传异常" + err.Error()
