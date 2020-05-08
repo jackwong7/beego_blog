@@ -216,7 +216,7 @@
             code = $('<span/>').text(code).html(); // encode
 
             var htmlCode = "<pre language='" + val + "' class='code'>" + code + "</pre></div>";
-            var codeBlock = "<div align='left' dir='ltr'>" + htmlCode + "</div><br/>";
+            var codeBlock = "<div align='left' dir='ltr'>" + htmlCode + "</div>";
 
             this.html.insert(codeBlock);
 
