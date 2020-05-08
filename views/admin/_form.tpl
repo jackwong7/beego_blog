@@ -197,11 +197,28 @@
         title: '插入代码',
         focus: true,
         undo: true,
+        type:'dropdown',
         refreshAfterCallback: true,
-        callback: function () {
+            options: {
+              'bash': 'bash',
+              'php': 'php',
+              'golang': 'golang'
+              'sql': 'sql'
+              'html': 'html'
+              'css': 'css'
+              'java': 'java'
+            },
+        callback: function (cmd,val) {
             let txt = this.selection.text();
             if (txt === undefined) return;
-            this.html.insert(`<pre class="code">${txt}</pre>`);
+            code = txt.replace(/\s+$/, ""); // rtrim
+            code = $('<span/>').text(code).html(); // encode
+
+            var htmlCode = "<pre language='" + val + "' class='code'>" + code + "</pre></div>";
+            var codeBlock = "<div align='left' dir='ltr'>" + htmlCode + "</div><br/>";
+
+            this.html.insert(codeBlock);
+
         }
     });
     //自定义区块--end
