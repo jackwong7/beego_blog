@@ -207,6 +207,7 @@
               'html': 'html',
               'css': 'css',
               'java': 'java',
+              'javascript': 'javascript',
             },
         callback: function (cmd,val) {
             let txt = this.selection.text();
