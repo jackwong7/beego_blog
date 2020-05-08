@@ -183,7 +183,7 @@ func (c *AdminController) Save() {
 	post := models.Post{}
 	post.UserId = 1
 	post.Title = c.Input().Get("title")
-	post.Content = c.Input().Get("content")
+	post.Content = strings.Replace(c.Input().Get("content"), `<p data-f-id="pbf" style="text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;">Powered by <a href="https://www.froala.com/wysiwyg-editor?pb=1" title="Froala Editor">Froala Editor</a></p>`, "", 1)
 	post.IsTop, _ = c.GetInt8("is_top")
 	post.Types, _ = c.GetInt8("types")
 	post.Tags = c.Input().Get("tags")
