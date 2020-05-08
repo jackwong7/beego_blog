@@ -202,11 +202,11 @@
             options: {
               'bash': 'bash',
               'php': 'php',
-              'golang': 'golang'
-              'sql': 'sql'
-              'html': 'html'
-              'css': 'css'
-              'java': 'java'
+              'golang': 'golang',
+              'sql': 'sql',
+              'html': 'html',
+              'css': 'css',
+              'java': 'java',
             },
         callback: function (cmd,val) {
             let txt = this.selection.text();
