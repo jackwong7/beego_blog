@@ -1,10 +1,10 @@
 package models
 
 import (
-	"encoding/json"
 	"github.com/astaxie/beego/orm"
 	"github.com/garyburd/redigo/redis"
 	"github.com/jackwong7/beego_blog/service"
+	jsoniter "github.com/json-iterator/go"
 	"strconv"
 	"time"
 )
@@ -64,6 +64,7 @@ type Postlists struct {
 }
 
 func GetPosts(queryField *QueryField, o orm.Ormer) *Postlists {
+	var json = jsoniter.ConfigCompatibleWithStandardLibrary
 	var (
 		offset   int
 		hosts    []orm.Params
@@ -102,7 +103,7 @@ func GetPosts(queryField *QueryField, o orm.Ormer) *Postlists {
 		query = query.Filter("is_top", 1)
 	}
 	count, _ = query.Count()
-	query.OrderBy("-created").Limit(pagesize, offset).Values(&list, "id", "title", "image", "tags", "views", "info", "updated")
+	query.OrderBy("-created").Limit(pagesize, offset).Values(&list, "id", "title", "image", "tags", "views", "info")
 
 	postlists = Postlists{
 		Keyword:  &queryField.Keyword,

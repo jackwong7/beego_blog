@@ -1,10 +1,10 @@
 package models
 
 import (
-	"encoding/json"
 	"github.com/astaxie/beego/orm"
 	"github.com/garyburd/redigo/redis"
 	"github.com/jackwong7/beego_blog/service"
+	jsoniter "github.com/json-iterator/go"
 	"time"
 )
 
@@ -20,6 +20,7 @@ func (m *Category) TableName() string {
 }
 
 func GetCategories() []*Category {
+	var json = jsoniter.ConfigCompatibleWithStandardLibrary
 	name := "getCategories"
 	categories := []*Category{}
 	conn := service.Pool.Get()

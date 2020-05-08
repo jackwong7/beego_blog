@@ -1,10 +1,10 @@
 package models
 
 import (
-	"encoding/json"
 	"github.com/astaxie/beego/orm"
 	"github.com/garyburd/redigo/redis"
 	"github.com/jackwong7/beego_blog/service"
+	jsoniter "github.com/json-iterator/go"
 )
 
 type Config struct {
@@ -18,6 +18,7 @@ func (m *Config) TableName() string {
 }
 
 func GetConfigs() []*Config {
+	var json = jsoniter.ConfigCompatibleWithStandardLibrary
 	name := "getConfigs"
 	configs := []*Config{}
 	conn := service.Pool.Get()
