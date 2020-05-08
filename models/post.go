@@ -56,8 +56,8 @@ type QueryField struct {
 
 type Postlists struct {
 	Keyword  string
-	List     []*PostView
-	Hosts    []*PostHotView
+	List     []orm.Params
+	Hosts    []orm.Params
 	Page     int
 	Pagesize int
 	Count    int64
@@ -66,10 +66,10 @@ type Postlists struct {
 func GetPosts(queryField QueryField, o orm.Ormer) Postlists {
 	var (
 		offset   int
-		hosts    []*Post
+		hosts    []orm.Params
 		pagesize int = 6
 		count    int64
-		list     []*Post
+		list     []orm.Params
 	)
 	name := queryField.ActionName + strconv.Itoa(queryField.Page) + strconv.Itoa(queryField.CateId) + queryField.Keyword
 	postlists := Postlists{}
@@ -97,37 +97,17 @@ func GetPosts(queryField QueryField, o orm.Ormer) Postlists {
 	if queryField.Keyword != "" {
 		query = query.Filter("title__icontains", queryField.Keyword)
 	}
-	query.OrderBy("-views").Limit(10, 0).All(&hosts, "id", "title")
-
+	query.OrderBy("-views").Limit(10, 0).Values(&hosts, "id", "title")
 	if queryField.ActionName == "home" {
 		query = query.Filter("is_top", 1)
 	}
 	count, _ = query.Count()
-	query.OrderBy("-created").Limit(pagesize, offset).All(&list, "id", "title", "image", "tags", "views", "info", "updated")
-	var writeList []*PostView
-	for _, v := range list {
-		writeList = append(writeList, &PostView{
-			Id:         v.Id,
-			Title:      v.Title,
-			Tags:       v.Tags,
-			Views:      v.Views,
-			CategoryId: v.CategoryId,
-			Info:       v.Info,
-			Image:      v.Image,
-			Updated:    v.Updated,
-		})
-	}
-	var writehots []*PostHotView
-	for _, v := range list {
-		writehots = append(writehots, &PostHotView{
-			Id:    v.Id,
-			Title: v.Title,
-		})
-	}
+	query.OrderBy("-created").Limit(pagesize, offset).Values(&list, "id", "title", "image", "tags", "views", "info", "updated")
+
 	postlists = Postlists{
 		Keyword:  queryField.Keyword,
-		List:     writeList,
-		Hosts:    writehots,
+		List:     list,
+		Hosts:    hosts,
 		Page:     queryField.Page,
 		Pagesize: pagesize,
 		Count:    count,
