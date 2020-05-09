@@ -28,12 +28,11 @@
     <link rel="stylesheet" href="/static/froala_editor_3.1.1/css/third_party/spell_checker.css">
     <link rel="stylesheet" href="/static/froala_editor_3.1.1/css/plugins/special_characters.css">
 
-
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="/static/plug/layui/layui.js"></script>
 
 </head>
 <body>
-<script type="text/javascript" src="/static/plug/layui/layui.js"></script>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <form class="layui-form" action="/admin/save"  method="post" style="margin:20px">
     <input name="id" value="{{.post.Id}}" type="hidden">
     <div class="layui-form-item">
@@ -121,6 +120,39 @@
         </div>
     </div>
 </form>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/froala_editor.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/align.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/char_counter.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/code_beautifier.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/code_view.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/colors.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/draggable.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/emoticons.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/entities.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/file.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/font_size.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/font_family.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/fullscreen.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/image.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/image_manager.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/line_breaker.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/inline_style.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/link.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/lists.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/paragraph_format.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/paragraph_style.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/quick_insert.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/quote.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/table.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/save.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/url.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/video.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/help.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/print.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/third_party/spell_checker.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/special_characters.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/word_paste.min.js"></script>
+<script type="text/javascript" src="/static/froala_editor_3.1.1/js/languages/zh_cn.js"></script>
 <script>
     //Demo
     layui.use('form', function(){
@@ -155,39 +187,6 @@
     });
 
 </script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/froala_editor.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/align.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/char_counter.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/code_beautifier.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/code_view.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/colors.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/draggable.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/emoticons.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/entities.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/file.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/font_size.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/font_family.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/fullscreen.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/image.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/image_manager.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/line_breaker.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/inline_style.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/link.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/lists.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/paragraph_format.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/paragraph_style.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/quick_insert.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/quote.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/table.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/save.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/url.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/video.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/help.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/print.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/third_party/spell_checker.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/special_characters.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/plugins/word_paste.min.js"></script>
-<script type="text/javascript" src="/static/froala_editor_3.1.1/js/languages/zh_cn.js"></script>
 
 <script>
 (function () {
@@ -265,13 +264,7 @@
         videoUploadMethod: 'POST',
         videoMaxSize: 50 * 1024 * 1024,
         videoAllowedTypes: ['avi', 'mov', 'mp4', 'm4v', 'mpeg', 'mpg', 'wmv', 'ogv'],
-    }).on('froalaEditor.file.error', function (e, editor, error, response) {
-        // handle errors
-    }).on('froalaEditor.image.error', function (e, editor, error, response) {
-        // handle errors
-    }).on('froalaEditor.video.error', function (e, editor, error, response) {
-        // handle errors
-    });
+    })
 })()
 </script>
 </body>
