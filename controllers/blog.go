@@ -126,7 +126,5 @@ func (c *BlogController) Comment() {
 
 //测试配置接口
 func (c *BlogController) GetConfigJson() {
-	result := models.GetConfigs()
-	c.Data["json"] = result
-	c.ServeJSON()
+	c.Ctx.Output.Body(*models.GetConfigsJson())
 }

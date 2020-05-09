@@ -38,3 +38,21 @@ func GetConfigs() []*Config {
 	}
 	return configs
 }
+func GetConfigsJson() *[]byte {
+	var json = jsoniter.ConfigCompatibleWithStandardLibrary
+	name := "getConfigs"
+	configs := []*Config{}
+	conn := service.Pool.Get()
+	defer conn.Close()
+	if jsonData, err := redis.Bytes(conn.Do("get", name)); err == nil {
+		return &jsonData
+	}
+	o := orm.NewOrm()
+	o.QueryTable(new(Config).TableName()).All(&configs)
+
+	cacheConfigs, err := json.Marshal(configs)
+	if err == nil {
+		conn.Do("set", name, cacheConfigs, "ex", service.Exp)
+	}
+	return &cacheConfigs
+}
