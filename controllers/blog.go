@@ -123,3 +123,10 @@ func (c *BlogController) Comment() {
 		c.History("发布评价成功", "")
 	}
 }
+
+//测试配置接口
+func (c *BlogController) GetConfigJson() {
+	result := models.GetConfigs()
+	c.Data["json"] = result
+	c.ServeJSON()
+}

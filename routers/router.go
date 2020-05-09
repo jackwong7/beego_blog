@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"github.com/jackwong7/beego_blog/controllers"
 	"github.com/astaxie/beego"
+	"github.com/jackwong7/beego_blog/controllers"
 )
 
 func init() {
@@ -15,6 +15,7 @@ func init() {
 	beego.Router("/timeline", &controllers.BlogController{}, "*:Timeline")
 	beego.Router("/resource", &controllers.BlogController{}, "*:Resource")
 	beego.Router("/comment", &controllers.BlogController{}, "post:Comment")
+	beego.Router("/api/getConfig", &controllers.BlogController{}, "get:GetConfigJson")
 
 	beego.AutoRouter(&controllers.AdminController{})
 }
