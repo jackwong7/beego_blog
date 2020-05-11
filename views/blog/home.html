@@ -27,11 +27,11 @@
                 </div>
                 <!--左边文章列表-->
                 <div class="blog-main-left">
-
+                    {{$domainPrefix := .domainPrefix}}
                     {{range .list}}
                     <div class="article shadow">
                         <div class="article-left">
-                            <img src="{{.Image}}"  alt="{{.Tags}}"/>
+                            <img src="{{$domainPrefix}}}{{.Image}}"  alt="{{.Tags}}"/>
                         </div>
                         <div class="article-right">
                             <h2 class="article-title">

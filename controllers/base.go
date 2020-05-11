@@ -37,6 +37,7 @@ func (p *baseController) Prepare() {
 		}
 		p.Data["config"] = configs
 	}
+	p.Data["domainPrefix"] = "http://qa6cgxtwh.bkt.clouddn.com"
 
 }
 

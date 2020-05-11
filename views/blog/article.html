@@ -14,10 +14,11 @@
                         未搜索到与【<span style="color: #FF5722;">{{.keyword}}</span>】有关的文章，随便看看吧！
                     </div>
                     {{end}}
+                    {{$domainPrefix := .domainPrefix}}
                     {{range .list}}
                     <div class="article shadow">
                         <div class="article-left">
-                            <img src="{{.Image}}"  />
+                            <img src="{{$domainPrefix}}{{.Image}}"  />
                         </div>
                         <div class="article-right">
                             <div class="article-title">
