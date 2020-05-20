@@ -53,3 +53,45 @@ p{
 .list-paddingleft-2 {
     padding-left: 30px;
 }
+.fr-img-wrap {
+    padding: 0;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.fr-img-wrap > span {
+    margin: auto;
+    display: block;
+    padding: 5px 5px 10px;
+    font-size: 14px;
+    font-weight: initial;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-opacity: 0.9;
+    -moz-opacity: 0.9;
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+span.fr-img-caption.fr-dib.fr-fil {
+    margin-left: 0;
+    text-align: left;
+    display: block;
+    float: none;
+    vertical-align: top;
+    max-width: 100%;
+    position: relative;
+}
+.fr-img-wrap img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    cursor: pointer;
+    padding: 0 1px;
+    position: relative;
+    max-width: 100%;
+}
