@@ -3,7 +3,7 @@ package controllers
 import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	"github.com/jackwong7/beego_blog/models"
+	"beego_blog/models"
 	"strings"
 )
 

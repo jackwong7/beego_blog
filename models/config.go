@@ -3,7 +3,7 @@ package models
 import (
 	"github.com/astaxie/beego/orm"
 	"github.com/garyburd/redigo/redis"
-	"github.com/jackwong7/beego_blog/service"
+	"beego_blog/service"
 	jsoniter "github.com/json-iterator/go"
 )
 

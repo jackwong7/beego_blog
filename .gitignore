@@ -1,3 +1,4 @@
-beego_blog.exe
 beego_blog
 .idea
+vendor
+beego_blog.*

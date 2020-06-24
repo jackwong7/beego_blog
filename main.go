@@ -5,8 +5,8 @@ import (
 	"github.com/astaxie/beego"
 	_ "github.com/astaxie/beego/session/redis"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/jackwong7/beego_blog/models"
-	_ "github.com/jackwong7/beego_blog/routers"
+	"beego_blog/models"
+	_ "beego_blog/routers"
 )
 
 func init() {

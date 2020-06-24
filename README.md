@@ -7,7 +7,7 @@
 
 1 . 下载安装
 
-    $ go get github.com/jackwong7/beego_blog
+    $ go get beego_blog
 
 2 . 加入数据库
 

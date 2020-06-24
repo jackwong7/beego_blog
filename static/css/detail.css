@@ -95,3 +95,6 @@ span.fr-img-caption.fr-dib.fr-fil {
     position: relative;
     max-width: 100%;
 }
+img {
+    max-width: 100%;
+}
