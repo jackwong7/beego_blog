@@ -1,9 +1,9 @@
 package models
 
 import (
+	"beego_blog/service"
 	"github.com/astaxie/beego/orm"
 	"github.com/garyburd/redigo/redis"
-	"beego_blog/service"
 	jsoniter "github.com/json-iterator/go"
 	"strconv"
 	"time"
@@ -72,7 +72,7 @@ func GetPosts(queryField *QueryField, o orm.Ormer) *Postlists {
 		count    int64
 		list     []orm.Params
 	)
-	name := queryField.ActionName + strconv.Itoa(queryField.Page) + strconv.Itoa(queryField.CateId) + queryField.Keyword
+	name := queryField.ActionName + "c" + strconv.Itoa(queryField.CateId) + "p" + strconv.Itoa(queryField.Page) + "k" + queryField.Keyword
 	postlists := Postlists{}
 	conn := service.Pool.Get()
 	defer conn.Close()
@@ -103,12 +103,14 @@ func GetPosts(queryField *QueryField, o orm.Ormer) *Postlists {
 		query = query.Filter("is_top", 1)
 	}
 	count, _ = query.Count()
-	query.OrderBy("-created").Limit(pagesize, offset).Values(&list, "id", "title", "image", "tags", "views", "info")
-
-	if len(list) == 0{
+	query.OrderBy("-created").Limit(pagesize, offset).Values(&list, "id", "title", "image", "tags", "views", "info", "updated")
+	for _, v := range list {
+		v["Updated"] = v["Updated"].(time.Time).Format("2006-01-02 15:04:05")
+	}
+	if len(list) == 0 {
 		list = []orm.Params{}
 	}
-	if len(hosts) == 0{
+	if len(hosts) == 0 {
 		hosts = []orm.Params{}
 	}
 	postlists = Postlists{

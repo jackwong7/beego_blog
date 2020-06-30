@@ -45,7 +45,7 @@ body {
     }
 
         .blog-main > .home-tips > i {
-            color: #009688;
+            color: #ff2d20;
             font-size: 15px;
         }
 
@@ -167,7 +167,7 @@ body {
     position: fixed;
     top: 0;
     background-color: #393D49;
-    border-bottom: 1px solid #5FB878;
+    border-bottom: 1px solid #ff2d20;
 }
 
     .blog-nav .layui-nav {
@@ -237,12 +237,12 @@ body {
         right: 0;
         padding: 10px 12px;
         color: white;
-        border: 1px solid #009688;
+        border: 1px solid #ff2d20;
         margin-top: 13px;
     }
 
         .blog-nav .blog-navicon:hover {
-            border: 1px solid #5FB878;
+            border: 1px solid #ff2d20;
         }
 
 @media (min-width: 992px) {
@@ -273,11 +273,11 @@ body {
 /*网站底部*/
 .blog-footer {
     text-align: center;
-    border-top: 1px solid #009688;
+    border-top: 1px solid #ff2d20;
     margin-top: 15px;
-    background: #2F4056;
+    background: #454545;
     padding: 5px 0;
-    color: #d3d2d2;
+    color: #ccc;
 }
 
     .blog-footer a {
@@ -304,7 +304,7 @@ body {
     text-align: center;
     height: 39px;
     background: #fff;
-    border-bottom: 1px solid #5FB878;
+    border-bottom: 1px solid #ff2d20;
 }
 
 .child-nav-btn {
@@ -317,7 +317,7 @@ body {
 }
 
 .child-nav-btn-this {
-    background: #5FB878;
+    background: #ff2d20;
     color: #fff;
 }
 /*子栏目导航END*/
@@ -326,7 +326,7 @@ body {
 .blog-nav-left {
     top: 65px;
     border-radius: 0;
-    border-top: 1px solid #5FB878;
+    border-top: 1px solid #ff2d20;
     box-shadow: 0 0 8px #fff;
 }
 
@@ -454,7 +454,7 @@ body {
 }
 
     .article:hover {
-        border-left: 5px solid #009688;
+        border-left: 5px solid #ff2d20;
         -moz-transition: all 0.3s linear;
         -o-transition: all 0.3s linear;
         -webkit-transition: all 0.3s linear;
@@ -482,7 +482,7 @@ body {
         }
 
             .article > .article-right > .article-title a:hover {
-                color: #009688;
+                color: #ff2d20;
             }
 
         .article > .article-right > .article-abstract {
@@ -501,7 +501,7 @@ body {
         }
 
         .article > .article-footer a {
-            color: #009688;
+            color: #ff205f;
         }
 
         .article > .article-footer .article-viewinfo,
@@ -572,7 +572,7 @@ body {
 }
 
     .blog-module > .blog-module-title {
-        border-bottom: 1px solid #009688;
+        border-bottom: 1px solid #ff2d20;
         font-size: 15px;
         font-weight: 500;
         padding: 0 0 5px 0;
@@ -585,7 +585,7 @@ body {
 }
 
     .blog-module-ul li .fa {
-        color: #009688;
+        color: #ff2d20;
     }
 /*右侧模块END*/
 
@@ -607,7 +607,7 @@ body {
 
     .article-category > .article-category-title {
         text-align: center;
-        border-bottom: 1px solid #009688;
+        border-bottom: 1px solid #ff2d20;
         font-size: 15px;
         font-weight: 500;
         padding: 0 0 5px 0;
@@ -619,7 +619,7 @@ body {
         color: #eee;
         padding: 5px 1%;
         margin: 4px 0;
-        background: #009688;
+        background: #ff2d20;
         width: 98%;
         text-align: center;
         line-height: 19px;
@@ -632,7 +632,7 @@ body {
 
         .article-category > a:hover {
             color: #fff;
-            background: #5FB878;
+            background: #ff2d20;
         }
 
 .category-toggle {
@@ -640,7 +640,7 @@ body {
     right: 0;
     top: 40%;
     width: 15px;
-    background: #009688;
+    background: #ff2d20;
     color: #fff;
     font-size: 16px;
     padding: 30px 0;
@@ -831,9 +831,9 @@ body {
         }
 
             .article-category a:hover {
-                border: 1px solid #5FB878;
+                border: 1px solid #ff2d20;
                 background: inherit;
-                color: #5FB878;
+                color: #ff2d20;
             }
 
     .category-toggle {
@@ -881,7 +881,7 @@ body {
         }
 
         .blog-comment .info .btn-reply {
-            color: #009688;
+            color: #ff2d20;
         }
 
     .blog-comment .content {

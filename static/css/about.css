@@ -12,7 +12,7 @@
 
     .layui-tab-brief .layui-tab-title {
         text-align: center;
-        border-bottom: 1px solid #5FB878;
+        border-bottom: 1px solid #ff2d20;
     }
 
         .layui-tab-brief .layui-tab-title li {
@@ -97,7 +97,7 @@
     }
 
 .friendlink-item {
-    box-shadow: inset 0 0 2px #5FB878;
+    box-shadow: inset 0 0 2px #ff2d20;
     width: 100%;
     display: block;
     padding: 10px 0;
@@ -107,7 +107,7 @@
 }
 
     .friendlink-item:hover {
-        box-shadow: 0 0 2px #5FB878;
+        box-shadow: 0 0 2px #ff2d20;
     }
 
 .friendlink-item-pic {

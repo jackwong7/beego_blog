@@ -1,18 +1,7 @@
 ﻿{{template "blog/head.html" .}}
     <!-- 主体（一般只改变这里的内容） -->
     <div class="blog-body">
-        <!-- canvas -->
-        <canvas id="canvas-banner" style="background: #393D49;"></canvas>
-        <!--为了及时效果需要立即设置canvas宽高，否则就在home.js中设置-->
-        <script type="text/javascript">
-            var canvas = document.getElementById('canvas-banner');
-            canvas.width = window.document.body.clientWidth - 10;//减去滚动条的宽度
-            if (screen.width >= 992) {
-                canvas.height = window.innerHeight * 1 / 3;
-            } else {
-                canvas.height = window.innerHeight * 2 / 7;
-            }
-        </script>
+
         <!-- 这个一般才是真正的主体内容 -->
         <div class="blog-container">
             <div class="blog-main">
@@ -20,9 +9,9 @@
                 <div class="home-tips shadow">
                     <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
                     <div class="home-tips-container">
-                        <span style="color: #009688">偷偷告诉大家，本博客的后台管理也正在制作，为大家准备了游客专用账号！</span>
-                        <span style="color: red">网站新增留言回复啦！使用QQ登陆即可回复，人人都可以回复！</span>
-                        <span style="color: #009688">JackWong &nbsp;—— &nbsp;一个PHP/GO/PYthon程序员的个人博客，新版网站采用Layui为前端框架，目前正在建设中！</span>
+                        <span style="color: #ff2d20">偷偷告诉大家，本博客的后台管理也正在制作，为大家准备了游客专用账号！</span>
+{{/*                        <span style="color: red">网站新增留言回复啦！使用QQ登陆即可回复，人人都可以回复！</span>*/}}
+                        <span style="color: #ff2d20">JackWong &nbsp;—— &nbsp;一个PHP/GO/PYthon程序员的个人博客，新版网站采用Layui为前端框架，目前正在建设中！</span>
                     </div>
                 </div>
                 <!--左边文章列表-->
@@ -44,7 +33,7 @@
                         </div>
                         <div class="clear"></div>
                         <div class="article-footer">
-{{/*                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp; {{.Updated}}</span>*/}}
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp; {{.Updated}}</span>
                             <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;JackWong</span>
                             <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{.Tags}}</a></span>
                             <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{.Views}}</span>
@@ -61,17 +50,14 @@
                 <div class="blog-main-right">
                     <div class="blogerinfo shadow">
                         <div class="blogerinfo-figure">
-                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588671257076&di=b136d1d8c3a5c61bbdd8056d31e606d0&imgtype=0&src=http%3A%2F%2Fwww.17qq.com%2Fimg_qqtouxiang%2F77078770.jpeg" alt="JackWong" style="width: 100px; height: 100px; border-color: papayawhip; border: 1px solid;"/>
+                            <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2403534164,2221268519&fm=26&gp=0.jpg" alt="JackWong" style="width: 100px; height: 100px; border-color: papayawhip; border: 1px solid;"/>
                         </div>
                         <p class="blogerinfo-nickname">JackWong</p>
                         <p class="blogerinfo-introduce">Fighting For Tommorrow!</p>
                         <p class="blogerinfo-location"><i class="fa fa-location-arrow"></i>&nbsp;Asia</p>
                         <hr />
                         <div class="blogerinfo-contact">
-                            <a target="_blank" title="QQ交流" href="javascript:layer.msg('启动QQ会话窗口')"><i class="fa fa-qq fa-2x"></i></a>
-                            <a target="_blank" title="给我写信" href="javascript:layer.msg('启动邮我窗口')"><i class="fa fa-envelope fa-2x"></i></a>
-                            <a target="_blank" title="新浪微博" href="javascript:layer.msg('转到你的微博主页')"><i class="fa fa-weibo fa-2x"></i></a>
-                            <a target="_blank" title="Github" href="https://github.com/"><i class="fa fa-git fa-2x"></i></a>
+                            <a target="_blank" title="Github" href="https://github.com/jackwong7/"><i class="fa fa-git fa-2x"></i></a>
                         </div>
                     </div>
                     <div></div><!--占位-->
