@@ -103,7 +103,7 @@ func GetPosts(queryField *QueryField, o orm.Ormer) *Postlists {
 		query = query.Filter("is_top", 1)
 	}
 	count, _ = query.Count()
-	query.OrderBy("-created").Limit(pagesize, offset).Values(&list, "id", "title", "image", "tags", "views", "info", "updated")
+	query.OrderBy("-created").Limit(pagesize, offset).Values(&list, "id", "title", "tags", "views", "info", "updated")
 	for _, v := range list {
 		v["Updated"] = v["Updated"].(time.Time).Format("2006-01-02 15:04:05")
 	}
