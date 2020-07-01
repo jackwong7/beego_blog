@@ -15,29 +15,23 @@
                     </div>
                     {{end}}
                     {{range .list}}
-                    <div class="article shadow">
-                        <div class="article-left">
-                            {{if ne .Image ""}}
-                                <img src="{{.Image}}"  alt="{{.Tags}}"/>
-                            {{end}}
-                        </div>
-                        <div class="article-right">
-                            <div class="article-title">
-                                <a href="detail.html?id={{.Id}}">{{.Title}}</a>
+                        <a class="no-underline article transition pb-5 mb-10 block shadow" href="detail.html?id={{.Id}}">
+                            <div>
+                                <h2 class="article-title">{{.Title}}</h2>
+                                <p class="article-abstract leading-normal">
+                                    {{.Info}}
+                                </p>
                             </div>
-                            <div class="article-abstract">
-                                {{.Info}}
+                            <div class="clear"></div>
+                            <div class="article-footer">
+                                <span><i class="fa fa-clock-o"></i>&nbsp;{{.Updated}}</span>
+                                {{if .Tags}}
+                                    <span><i class="fa fa-tag"></i>&nbsp;{{.Tags}}</span>
+                                {{end}}
+                                <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{.Views}}</span>
+                                <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;0</span>
                             </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp; {{.Updated}}</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;JackWong</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{.Tags}}</a></span>
-                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{.Views}}</span>
-                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;0</span>
-                        </div>
-                    </div>
+                        </a>
                     {{end}}
 
                     <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-0">

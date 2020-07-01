@@ -1,96 +1,93 @@
 ﻿{{template "blog/head.html" .}}
-    <!-- 主体（一般只改变这里的内容） -->
-    <div class="blog-body">
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
 
-        <!-- 这个一般才是真正的主体内容 -->
-        <div class="blog-container">
-            <div class="blog-main">
-                <!-- 网站公告提示 -->
-                <div class="home-tips shadow">
-                    <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
-                    <div class="home-tips-container">
-                        <span style="color: #ff2d20">偷偷告诉大家，本博客的后台管理也正在制作，为大家准备了游客专用账号！</span>
-{{/*                        <span style="color: red">网站新增留言回复啦！使用QQ登陆即可回复，人人都可以回复！</span>*/}}
-                        <span style="color: #ff2d20">JackWong &nbsp;—— &nbsp;一个PHP/GO/PYthon程序员的个人博客，新版网站采用Layui为前端框架，目前正在建设中！</span>
-                    </div>
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main">
+            <!-- 网站公告提示 -->
+            <div class="home-tips mb-10">
+                <i style="float:left;line-height:17px;" class="fa fa-volume-up"></i>
+                <div class="home-tips-container">
+                    <span style="color: #666">Welcome to my blog.</span>
+                    <span style="color: #666">My name is JackWong&nbsp;I'm PHP/GO/PYthon Programer.</span>
                 </div>
-                <!--左边文章列表-->
-                <div class="blog-main-left">
-                    {{range .list}}
-                    <div class="article shadow">
-                        <div class="article-left">
-                            {{if ne .Image ""}}
-                            <img src="{{.Image}}"  alt="{{.Tags}}"/>
-                            {{end}}
-                        </div>
-                        <div class="article-right">
-                            <h2 class="article-title">
-                                <a href="detail.html?id={{.Id}}">{{.Title}}</a>
-                            </h2>
-                            <div class="article-abstract">
+            </div>
+            <!--左边文章列表-->
+            <div class="blog-main-left">
+                {{range .list}}
+                    <a class="no-underline article transition pb-5 mb-10 block shadow" href="detail.html?id={{.Id}}">
+                        <div>
+                            <h2 class="article-title">{{.Title}}</h2>
+                            <p class="article-abstract leading-normal">
                                 {{.Info}}
-                            </div>
+                            </p>
                         </div>
                         <div class="clear"></div>
                         <div class="article-footer">
-                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp; {{.Updated}}</span>
-                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;JackWong</span>
-                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{.Tags}}</a></span>
+                            <span><i class="fa fa-clock-o"></i>&nbsp;{{.Updated}}</span>
+                            {{if .Tags}}
+                            <span><i class="fa fa-tag"></i>&nbsp;{{.Tags}}</span>
+                            {{end}}
                             <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{.Views}}</span>
                             <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;0</span>
                         </div>
-                    </div>
-                    {{end}}
+                    </a>
+                {{end}}
 
-                    <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-0">
-                        {{str2html .pagebar}}
-                    </div>
+                <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-0">
+                    {{str2html .pagebar}}
                 </div>
-                <!--右边小栏目-->
-                <div class="blog-main-right">
-                    <div class="blogerinfo shadow">
-                        <div class="blogerinfo-figure">
-                            <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2403534164,2221268519&fm=26&gp=0.jpg" alt="JackWong" style="width: 100px; height: 100px; border-color: papayawhip; border: 1px solid;"/>
-                        </div>
-                        <p class="blogerinfo-nickname">JackWong</p>
-                        <p class="blogerinfo-introduce">Fighting For Tommorrow!</p>
-                        <p class="blogerinfo-location"><i class="fa fa-location-arrow"></i>&nbsp;Asia</p>
-                        <hr />
-                        <div class="blogerinfo-contact">
-                            <a target="_blank" title="Github" href="https://github.com/jackwong7/"><i class="fa fa-git fa-2x"></i></a>
-                        </div>
-                    </div>
-                    <div></div><!--占位-->
-
-                    <div class="article-category shadow">
-                        <div class="article-category-title">分类导航</div>
-                        {{range .cates}}
-                        <a href="/article?cate_id={{.Id}}">{{.Name}}</a>
-                        {{end}}
-                        <div class="clear"></div>
-                    </div>
-
-                    <div class="blog-module shadow">
-                        <div class="blog-module-title">热文排行</div>
-                        <ul class="fa-ul blog-module-ul">
-                            {{range .hosts}}
-                            <li style="line-height: 30px"><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html?id={{.Id}}"><h3>{{.Title}}</h3></a></li>
-                            {{end}}
-                        </ul>
-                    </div>
-
-                    <div class="blog-module shadow">
-                        <div class="blog-module-title">友情链接</div>
-                        <ul class="blogroll">
-                            <li><a target="_blank" href="//www.zhangyuzong.com" title="星之七章Blog">星之七章Blog</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="clear"></div>
             </div>
+            <!--右边小栏目-->
+            <div class="blog-main-right">
+                <div class="blogerinfo shadow">
+                    <div class="blogerinfo-figure">
+                        <img src="static/images/avatar.png"
+                             alt="JackWong"
+                             style="width: 100px; height: 100px; border-color: papayawhip; border: 1px solid;"/>
+                    </div>
+                    <p class="blogerinfo-nickname">JackWong</p>
+                    <p class="blogerinfo-introduce">Fighting For Tommorrow!</p>
+                    <p class="blogerinfo-location"><i class="fa fa-location-arrow"></i>&nbsp;Asia</p>
+                    <hr/>
+                    <div class="blogerinfo-contact">
+                        <a target="_blank" title="Github" href="https://github.com/jackwong7/"><i
+                                    class="fa fa-git fa-2x"></i></a>
+                    </div>
+                </div>
+                <div></div><!--占位-->
+
+                <div class="article-category shadow">
+                    <div class="article-category-title">分类导航</div>
+                    {{range .cates}}
+                        <a href="/article?cate_id={{.Id}}">{{.Name}}</a>
+                    {{end}}
+                    <div class="clear"></div>
+                </div>
+
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">热文排行</div>
+                    <ul class="fa-ul blog-module-ul">
+                        {{range .hosts}}
+                            <li style="line-height: 30px"><i class="fa-li fa fa-hand-o-right"></i><a
+                                        href="detail.html?id={{.Id}}"><h3>{{.Title}}</h3></a></li>
+                        {{end}}
+                    </ul>
+                </div>
+
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">友情链接</div>
+                    <ul class="blogroll">
+                        <li><a target="_blank" href="//www.zhangyuzong.com" title="星之七章Blog">星之七章Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
-    <!-- 底部 -->
-    {{template "blog/foot.html" .}}
+</div>
+<!-- 底部 -->
+{{template "blog/foot.html" .}}
 </body>
 </html>

@@ -44,7 +44,7 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">标题：</label>
+        <label class="layui-form-label">标题</label>
         <div class="layui-input-block">
             <input type="text" name="title" required value="{{.post.Title}}" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
         </div>
@@ -57,7 +57,7 @@
             {{$categoryId := .post.CategoryId}}
                 <option value=""></option>
                 {{range .categorys}}
-                <option value="{{.Id}}" {{if and $categoryId   $categoryId .Id}} selected {{end}}>{{.Name}}</option>
+                <option value="{{.Id}}" {{if $categoryId }}{{if eq $categoryId .Id}} selected {{end}}{{end}}>{{.Name}}</option>
                 {{end}}
             </select>
         </div>
@@ -89,7 +89,7 @@
 
 
     <div class="layui-form-item">
-        <label class="layui-form-label">标签</label>
+        <label class="layui-form-label">简介</label>
         <div class="layui-input-block">
             <textarea name="info" placeholder="请输入内容" class="layui-textarea">{{.post.Info}}</textarea>
 

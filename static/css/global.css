@@ -39,13 +39,12 @@ body {
 
     .blog-main > .home-tips {
         padding: 10px 10px;
-        background: #fff;
+        /*background: #fff;*/
         font-size: 13px;
-        margin-bottom: 15px;
     }
 
         .blog-main > .home-tips > i {
-            color: #ff2d20;
+            color: rgba(255, 32, 32, 0.57);
             font-size: 15px;
         }
 
@@ -443,22 +442,19 @@ body {
 
 /*文章列表（网站首页和文章专栏共用）*/
 .article {
-    padding: 15px;
-    margin-bottom: 10px;
     background: #fff;
-    border-left: 5px solid #fff;
-    -moz-transition: all 0.3s linear;
-    -o-transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
-    transition: all 0.3s linear;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -webkit-transition: all 0.15s ease;
+    transition: all 0.15s ease;
 }
 
     .article:hover {
-        border-left: 5px solid #ff2d20;
-        -moz-transition: all 0.3s linear;
-        -o-transition: all 0.3s linear;
-        -webkit-transition: all 0.3s linear;
-        transition: all 0.3s linear;
+        cursor:pointer;transform:translate(0,-0.5rem);
+        -moz-transition: all 0.15s ease;
+        -o-transition: all 0.15s ease;
+        -webkit-transition: all 0.15s ease;
+        transition: all 0.15s ease;
     }
 
     .article > .article-left {
@@ -1117,4 +1113,26 @@ body {
     to {
         opacity: 0;
     }
+}
+h2{
+    display: block;
+    font-size: 1.5em;
+    /*margin-block-start: 0.83em;*/
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.mb-10 {
+    margin-bottom: 2.5rem;
+}
+.pb-5{
+    padding: 1.25rem;
+}
+.leading-normal {
+    line-height: 1.5;
+}
+.block{
+    display: block;
 }
